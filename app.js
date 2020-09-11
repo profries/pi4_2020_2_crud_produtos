@@ -23,6 +23,13 @@ mongoose.connect('mongodb://localhost/app_produtos', {
   });
 mongoose.Promise = global.Promise;
 
+//Middleware para Log
+app.use((req,resp,next) => {
+  console.log("Request Time: "+Date.now());
+  console.log("Method: "+req.method)
+  next();
+});
+
 //Uso das rotas
 app.use('/api/produtos', rotaProduto);
   
